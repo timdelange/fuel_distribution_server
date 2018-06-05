@@ -12,7 +12,7 @@
     "bcrypt": "^1.0.3",
     "chai": "^4.1.2",
     "classnames": "^2.2.5",
-    "ecstatic": "^1.4.0",
+    "ecstatic": "^2.0.0",
     "express": "^4.16.2",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "^0.2.11",
