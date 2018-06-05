@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/doc/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/doc/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/doc/css/main.css">
+
+        <script src="/doc/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+<div class="container">
+    <table class="header">
+        <tr>
+        </tr>
+    </table>
+    <div class="text-center"><h2>Proof of delivery</h2></div>
+    <table class="table table-bordered">
+        <tr>
+            <td colspan=2>
+                <div><strong>Delivered To:</strong></div>
+                <div style="height: 6em">
+                    <%- order('customer.address.name_line')    %><br>
+                    <%- order('customer.address.thoroughfare') %><br>
+                    <%- order('customer.address.locality')     %><br>
+                    <%- order('customer.address.postal_code')  %>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div><strong>Date:</strong> <%- signedDate %></div>
+
+            </td>
+            <td>
+                <strong>Delivery Note:</strong> DN9-<%- order('entityform_id') %>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan=2>
+
+            </td>
+        </tr>
+    </table>
+     <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Product</th>
+                            <th class="text-center">Tank No</th>
+                            <th class="text-right">After</th>
+                            <th class="text-right">Before</th>
+                            <th class="text-right">Litres</th>
+                        </tr>
+                </thead>
+                <tbody>
+                <%
+                    var tanks = doc('tanks');
+                    for (let tankNo in tanks) {
+                      if (tanks.hasOwnProperty(tankNo)) {
+                      const tank = tanks[tankNo];
+                      tank.total = tank.after - tank.before;
+                %>
+                    <tr>
+                        <td class="text-center"><%- tank.type %></td>
+                        <td class="text-center"><%- tankNo %></td>
+                        <td class="text-right"><%- tank.after %></td>
+                        <td class="text-right"><%- tank.before %></td>
+                        <td class="text-right"><strong><%- tank.total %></strong></td>
+                    </tr>
+                    <% }} %>
+                </tbody>
+
+    </table>
+    <table class="table table-bordered">
+                <thead>
+                        <tr>
+                            <th>Truck Registration</th>
+                        </tr>
+                </thead>
+                <tbody>
+				<tr>
+						<td><%- doc('truck_registration_no') %></td>
+                    </tr>
+                </tbody>
+    </table>
+    <table class="table table-bordered">
+                <thead>
+                        <tr>
+                            <th style="width:25%;">Time of Arrival</th>
+                            <th style="width:25%;">Time&nbsp;of&nbsp;Departure</th>
+                            <th>Before Km</th>
+                            <th>After Km</th>
+                            <th>Total Km</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+						<td><%- arrival_time %></td>
+						<td><%- departure_time %></td>
+						<td><%- doc('km_before')   %></td>
+						<td><%- doc('km_after')    %></td>
+						<td><%- kmDistance %></td>
+                    </tr>
+                </tbody>
+    </table>
+     <table class="table table-bordered">
+                <thead>
+                        <tr>
+                            <th>Driver Signature</th>
+                            <th class=text-center >Customer Signature</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class=text-center ><img style="max-height: 5em"cclass="img-responsive" src="<%= imageBaseUrl %><%= doc('signature_driver.url')  %>"</td>
+                        <td class=text-center ><img style="max-height: 5em"cclass="img-responsive" src="<%= imageBaseUrl %><%= doc('signature_customer.url')  %>"</td>
+                    </tr>
+                     <tr>
+                        <td class=text-center ><%- doc('signature_driver.signee') %></td>
+                        <td class=text-center ><%- doc('signature_customer.signee') %></td>
+                    </tr>
+                </tbody>
+    </table>
+</div>
+<div style="page-break-before: always;"></div>
+<% for (var i = 0 ; i < doc('images').length; i ++) { %>
+<div style="padding:9px">
+	<div style="width: 100%, height: 100%">
+		<img src="<%= imageBaseUrl %><%= doc('images')[i].url %>" class="img img-responsive">
+	</div>
+</div>
+<% } %>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/doc/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="/doc/js/vendor/bootstrap.min.js"></script>
+
+        <script src="/doc/js/main.js"></script>
+    </body>
+</html>

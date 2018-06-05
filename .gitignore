@@ -1,0 +1,7 @@
+*.swp
+.idea/workspace.xml
+/.idea/*
+**/.idea/*
+.idea/**
+*.swo
+.DS_*
