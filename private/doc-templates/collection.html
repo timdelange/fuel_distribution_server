@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+<div class="container">
+    <table class="header">
+        <tr>
+            <td style="text-align: left;" class="text-center"><img src="images/logo.jpg" /></td>
+        </tr>
+    </table>
+    <div class="text-center"><h2>Collection Document</h2></div>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <strong>Sales Order:</strong> <%- sales_order_number %>
+            </td>
+
+        </tr>
+    </table>
+     <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Product</th>
+                            <th class="text-right">Litres</th>
+                        </tr>
+                </thead>
+                <tbody>
+					<% var products = ['ulp', '95ulp','lrp','di50','di500'];      %>
+					<% for (i in products) {  %>
+                    <%    var litres = documents.collection[docIndex][products[i]];                    %>
+                    <tr>
+                        <td class="text-center"><%- products[i] %></td>
+                        <td class="text-right"><strong><%- litres %></strong></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+
+    </table>
+    <table class="table table-bordered">
+                <thead>
+                        <tr>
+                            <th>Chevron Delivery No</th>
+                            <th>Chevron reference No</th>
+                            <th>BF Order No</th>
+                            <th>Truck Registration</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+						<td><%- documents.collection[docIndex].supplierDeliveryNoteNumber %></td>
+						<td><%- supplier_reference_number %></td>
+                        <td class="text-center" ><%- sales_order_number %></td>
+						<td><%- documents.collection[docIndex].truckRegNo %></td>
+                    </tr>
+                </tbody>
+    </table>
+     <table class="table table-bordered">
+                <thead>
+                        <tr>
+                            <th class=text-center >Customer Signature</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class=text-center ><img style="max-height: 5em"cclass="img-responsive" src="<%= imageBaseUrl %><%= documents.collection[docIndex].signature.default.image  %>"</td>
+                    </tr>
+                     <tr>
+                        <td class=text-center ><%- documents.collection[docIndex].signature.default.signee %></td>
+                    </tr>
+                     <tr>
+                        <td class=text-center ><small><%- documents.collection[docIndex].date %></small></td>
+                    </tr>
+                </tbody>
+    </table>
+</div>
+<%  var maxLength = _.deepGet(documents.collection[docIndex], [ 'images', 'length' ]) || 0; %>
+<% for (var i = 0 ; i < maxLength; i ++) { %>
+<div style="page-break-before: always;"></div>
+<div style="padding:9px">
+	<div style="width: 100%, height: 100%">
+		<img src="<%= imageBaseUrl %><%= documents.collection[docIndex].images[i] %>" class="img img-responsive">
+	</div>
+</div>
+<% } %>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

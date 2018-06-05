@@ -1,0 +1,24 @@
+{
+	"public": {
+		"logo": "images/encopetroleum.png",
+		"menuLogo": "images/encopetroleum.png",
+		"headerLogo": "images/header-logo.png",
+		"appTitle": "Driver App",
+		"imageBaseUrl": "http://127.0.0.1:3000/doc-images/",
+		"VersionMessage": "Dev Testing (data will be discarded)",
+		"Build": "171123-dev",
+    "jobLimit": 5
+	},
+
+	"MAIL_URL": "smtp://user%40example.com:passwords@example.com:587",
+	"pdfServiceUrl": "http://127.0.0.1:5454",
+	"docBaseUrl": "http://127.0.0.1:3000",
+	"syncBaseUrl": "http://beta.example.com",
+  "imageBaseUrl": "http://127.0.0.1:3000/doc-images/",
+  "imageBaseDir": "/home/tim/public/images/",
+  "downloadDir": "/home/tim/public/download/",
+	"mailFrom": "DEV TEST Driver App <user@example.com>",
+	"docRecipients": ["user001@gmailx.com"],
+
+	"drupalSyncInterval": "210"
+}

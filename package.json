@@ -1,0 +1,40 @@
+{
+  "name": "enco-rover",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "methods.js",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angularjs-datetime-picker": "^0.1.16",
+    "async": "^2.6.0",
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "^1.0.3",
+    "chai": "^4.1.2",
+    "classnames": "^2.2.5",
+    "ecstatic": "^1.4.0",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "meteor-node-stubs": "^0.2.11",
+    "mocha": "^3.5.3",
+    "moment": "^2.19.2",
+    "react": "^15.6.2",
+    "react-addons-pure-render-mixin": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-fastclick": "^3.0.2",
+    "react-input-slider": "^3.0.0",
+    "react-modal": "^3.1.2",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^4.10.2",
+    "redux-thunk": "^2.2.0",
+    "shelljs": "^0.7.4",
+    "signature_pad": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "meteor run"
+  }
+}
